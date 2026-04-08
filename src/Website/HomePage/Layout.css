@@ -1,0 +1,89 @@
+body{
+    background-color: rgb(193, 226, 255);
+}
+#weather-interface{
+    width: clamp(30em, 75vw, 50em);
+    margin-left: auto;
+    margin-right: auto;
+    border: 3px dotted red;
+}
+#current-temp{
+    display: inline-block;
+}
+#daily-grid{
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    justify-content: space-evenly;
+    gap: 1%;
+
+    margin: 0px auto .75em auto;
+    border: 2px solid black;
+}
+.daily-weather{
+    text-align: center;
+
+    min-width: 2em;
+    background-color:aliceblue;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 6px;
+    border-color: rgb(0,0,0,.2);
+    box-shadow: 0px 0px 20px lightblue;
+    padding: 10px;
+}
+#hourly-grid{
+    border: 2px solid black;
+    overflow-y: auto;
+}
+/* Browser Scroll Bar */
+html::-webkit-scrollbar {
+    width: 1ch;
+}
+html::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 10px;
+}
+/* draggable part */
+html::-webkit-scrollbar-thumb {
+    background: rgb(162, 203, 216);
+    border-radius: 10px;
+}
+
+/* hover effect */
+html::-webkit-scrollbar-thumb:hover {
+    background: rgb(185, 229, 242);
+}
+html::-webkit-scrollbar-thumb:active {
+    background: rgb(141, 177, 187);
+}
+
+.hourly-bar{
+    border: 2px dashed blue;
+
+    display: grid;
+    min-width: 2em;
+    background-color:aliceblue;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 6px;
+    border-color: rgb(0,0,0,.2);
+    box-shadow: 0px 0px 20px lightblue;
+    overflow: hidden;
+}
+.hourly-bar:hover{
+    background-color:white;
+}
+.hourly-info{
+    margin: 0;
+
+    background-color: rgb(217, 236, 253);
+}
+.hourly-temp{
+    padding: 10px;
+}
+.hourly-info{
+    padding: 10px;
+}
+.hidden{
+    display: none;
+}

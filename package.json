@@ -1,0 +1,7 @@
+{
+  "type": "module",
+  "dependencies": {
+    "express": "^5.2.1",
+    "openmeteo": "^1.2.3"
+  }
+}

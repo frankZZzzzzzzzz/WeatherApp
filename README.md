@@ -1,6 +1,7 @@
 ## Weather App
 
 ## How to run
+Program requires **Node.js** and **npm** to be installed
 ```powershell
 npm install openmeteo
 ```

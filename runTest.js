@@ -6,5 +6,5 @@ app.get('/', (request, reposonse) => {
     reposonse.send('NOPE');
 });
 */
-app.use(express.static('./src/Website/HomePage'));
+app.use(express.static('./src/Website/Homepage'));
 app.listen(process.env.PORT || 3000, () => console.log('http://localhost:3000'));

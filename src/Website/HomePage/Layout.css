@@ -2,13 +2,28 @@ body{
     background-color: rgb(193, 226, 255);
 }
 #weather-interface{
-    width: clamp(30em, 75vw, 50em);
+    width: clamp(30rem, 75vw, 50rem);
     margin-left: auto;
     margin-right: auto;
-    border: 3px dotted red;
+    /* border: 3px dotted red;*/
+}
+#current-weather{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
 }
 #current-temp{
-    display: inline-block;
+    font-size: clamp(6.5rem, 13vw, 9rem);
+    vertical-align: top;
+}
+#current-temp #unit-font{
+    position: relative;
+    top: clamp(.2rem, 1vw, 1rem);
+    font-size: clamp(.5em, 3vw, 2rem);
+    vertical-align: top
+}
+#current-info{
+    display: grid;
+    grid-template-rows: repeat(3, 1fr)
 }
 #daily-grid{
     display: grid;
@@ -17,7 +32,7 @@ body{
     gap: 1%;
 
     margin: 0px auto .75em auto;
-    border: 2px solid black;
+    /* border: 2px solid black; */
 }
 .daily-weather{
     text-align: center;
@@ -32,8 +47,11 @@ body{
     padding: 10px;
 }
 #hourly-grid{
-    border: 2px solid black;
+    /* border: 2px solid black; */
     overflow-y: auto;
+}
+.Hour-Temp{
+    font-size: 13.5px;
 }
 /* Browser Scroll Bar */
 html::-webkit-scrollbar {

@@ -1,17 +1,20 @@
-import { fetchWeatherApi } from "openmeteo";
-
 function CtoF(celsius){
     return (1.8*celsius+32);
 }
 
-const params = {
+const params = new URLSearchParams({
 	latitude: 40.743440,
 	longitude: -73.752655,
-	current: "temperature_2m",
-};
-const url = 'https://api.open-meteo.com/v1/forecast';
-const responses = await fetchWeatherApi(url, params);
+	daily: `temperature_2m_max,temperature_2m_mean,temperature_2m_min`,
+	hourly: "temperature_2m",
+	minutely_15: `temperature_2m`,
 
+});
+const url = `https://api.open-meteo.com/v1/forecast?${params}`;
+const response = await fetch(url);
+console.log(await response.json());
+
+/*
 // Process first location. Add a for-loop for multiple locations or weather models
 const response = responses[0];
 
@@ -28,6 +31,7 @@ console.log(
 	`\nElevation: ${elevation}m asl`,
 	`\nTimezone difference to GMT+0: ${utcOffsetSeconds}s`,
 );
+*/
 /*
 const hourly = response.hourly();
 

@@ -75,10 +75,10 @@ function loadCurrentData(data){
     currTemp.innerHTML = `${currentData.temperature_2m}<span id="unit-font">${tempUnit}</span>`;
 
     const currPrecipitation = document.getElementById("precipitation");
-    currPrecipitation.innerHTML = `${currentData.precipitation_probability} ${precipitationUnit}`;
+    currPrecipitation.innerHTML = `Precipitation: ${currentData.precipitation_probability}${precipitationUnit}`;
 
     const currHumidity = document.getElementById("humidity");
-    currHumidity.innerHTML = `${currentData.relative_humidity_2m} ${humidityUnit}`;
+    currHumidity.innerHTML = `Humidity: ${currentData.relative_humidity_2m}${humidityUnit}`;
 }
 function loadHourlyData(data){
     let hourlyData = data.hourly;
@@ -92,18 +92,20 @@ function loadHourlyData(data){
     
     const now = new Date();
     let currentTime = now.toISOString();
-    while (hourlyData.time[index] < currentTime && index < hourlyData.time.length)
+    while (index < hourlyData.time.length && hourlyData.time[index] < currentTime)
         index++;
-
 
     for (let i = 0; i < 24; i++){
         const currHour = hourlyBars.at(i);
 
         const hourTemp = currHour.temp;
         let hour = new Date(hourlyData.time[i+index]+"Z").getHours();
-        let time = `${hour % 12 || 12}:00 ${(hour > 12 ) ? "PM" : "AM"}`;
-        hourTemp.innerHTML = `<span class="Hour-Time">${time}<span> 
-                    <span class="Hour-Temp">${hourlyData.temperature_2m[i+index]} ${tempUnit} = ${CtoF(hourlyData.temperature_2m[i+index]).toFixed(1)}F<span>`;
+        let time = `${hour % 12 || 12}:00 ${(hour >= 12 ) ? "PM" : "AM"}`;
+        hourTemp.innerHTML = `<span class="Hour-Time">${time}</span>
+                    <span class="Hour-Temp">
+                        ${hourlyData.temperature_2m[i+index]} ${tempUnit} = 
+                        ${CtoF(hourlyData.temperature_2m[i+index]).toFixed(1)}F
+                    </span>`;
 
         const hourInfo = currHour.info;
         hourInfo.innerHTML = `Precipitation: ${hourlyData.precipitation_probability[i+index]}${precipitationUnit} <br>

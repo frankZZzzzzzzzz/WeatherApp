@@ -1,5 +1,5 @@
 body{
-    background-color: rgb(193, 226, 255);
+    background-color: rgb(160, 211, 255);
 }
 #weather-interface{
     width: clamp(30rem, 75vw, 50rem);
@@ -12,18 +12,20 @@ body{
     grid-template-columns: 1fr 2fr;
 }
 #current-temp{
+    color:aliceblue;
     font-size: clamp(6.5rem, 13vw, 9rem);
     vertical-align: top;
 }
 #current-temp #unit-font{
+    color:white;
     position: relative;
     top: clamp(.2rem, 1vw, 1rem);
     font-size: clamp(.5em, 3vw, 2rem);
     vertical-align: top
 }
 #current-info{
+    color:aliceblue;
     display: grid;
-    grid-template-rows: repeat(3, 1fr)
 }
 #daily-grid{
     display: grid;
@@ -51,6 +53,7 @@ body{
     overflow-y: auto;
 }
 .Hour-Temp{
+    margin-left: 10px;
     font-size: 13.5px;
 }
 /* Browser Scroll Bar */

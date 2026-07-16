@@ -7,19 +7,19 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Start Server",
+            "name": "Start Debug Server",
             "program": "runTest.js"
         },
         {
             "type": "chrome",
             "request": "launch",
-            "name": "Launch Chrome",
+            "name": "Launch Debug Chrome",
             "url": "http://localhost:3000"
         },
         {
             "type": "node",
             "request": "launch",
-            "name": "Start Server and Launch",
+            "name": "Debug Start Server and Launch",
             "program": "runTest.js",
 
             "serverReadyAction": {

@@ -1,5 +1,4 @@
 import { getAllData } from "./WeatherAPI.js"
-
 let Scrolling = false;
 let yPos;
 
@@ -7,6 +6,38 @@ let yPos;
 const hourlyBars = [];
 const dailyBars = [];
 
+//Weather Codes 
+const assetPath = "../../Assets/"
+const WeatherCodes= [
+    [[0],       assetPath+"Clear_Sky.png"],
+    [[1,2,3],   assetPath+"Partially_Foggy.png"],
+    [[45,48],   assetPath+"Foggy.png"],
+    [[51,53,55],assetPath+"Drizzle.png"],
+    [[56,57],   assetPath+"Freezing_Drizzle.png"],
+    [[61,63,65],assetPath+"Rain.png"],
+    [[66,67],   assetPath+"Freezing_Rain.png"],
+    [[71,73,75],assetPath+"Snow_Fall.png"],
+    [[77],      assetPath+"Snow_Grain.png"], //
+    [[80,81,82],assetPath+"Rain_Shower.png"],
+    [[85,86],   assetPath+"Snow_Shower.png"],
+    [[95],      assetPath+"Thunderstorm.png"],
+    [[96,99],   assetPath+"Thunderstorm_Hail.png"],
+]
+/* 
+0	Clear sky
+1, 2, 3	Mainly clear, partly cloudy, and overcast
+45, 48	Fog and depositing rime fog
+51, 53, 55	Drizzle: Light, moderate, and dense intensity
+56, 57	Freezing Drizzle: Light and dense intensity
+61, 63, 65	Rain: Slight, moderate and heavy intensity
+66, 67	Freezing Rain: Light and heavy intensity
+71, 73, 75	Snow fall: Slight, moderate, and heavy intensity
+77	Snow grains
+80, 81, 82	Rain showers: Slight, moderate, and violent
+85, 86	Snow showers slight and heavy
+95 *	Thunderstorm: Slight or moderate
+96, 99 *	Thunderstorm with slight and heavy hail
+*/
 window.onmousedown = (e) => {
     Scrolling = true;
     yPos = e.clientY;
@@ -73,6 +104,16 @@ function loadCurrentData(data){
 
     const currTemp = document.getElementById("current-temp");
     currTemp.innerHTML = `${currentData.temperature_2m}<span id="unit-font">${tempUnit}</span>`;
+
+    const weatherImg = document.querySelector("img")
+    const codeMatch = WeatherCodes.find((weatherArr) => {
+        const codes = weatherArr[0];
+        for (const code of codes)
+            if (code === currentData.weather_code)
+                return true;
+        return false;
+    });
+    weatherImg.src = codeMatch[1];
 
     const currPrecipitation = document.getElementById("precipitation");
     currPrecipitation.innerHTML = `Precipitation: ${currentData.precipitation_probability}${precipitationUnit}`;

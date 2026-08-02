@@ -1,10 +1,12 @@
-import express from 'express'
+import express from "express";
+import path from "path";
 
 const app = express();
-/*
-app.get('/', (request, reposonse) => {
-    reposonse.send('NOPE');
+
+app.use(express.static(path.resolve("src/Website")));
+
+app.get("/", (req, res) => {
+    res.redirect("/Homepage/");
 });
-*/
-app.use(express.static('./src/Website/Homepage'));
-app.listen(process.env.PORT || 3000, () => console.log('http://localhost:3000'));
+
+app.listen(3000, () => console.log("http://localhost:3000"));

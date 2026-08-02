@@ -27,6 +27,9 @@ body{
     color:aliceblue;
     display: grid;
 }
+#current-weather-icon{
+    width: clamp(6.5rem, 13vw, 9rem);
+}
 #daily-grid{
     display: grid;
     grid-template-columns: repeat(7, 1fr);

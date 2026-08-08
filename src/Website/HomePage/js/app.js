@@ -64,6 +64,7 @@ function initializeDays(){
         dayTile.textContent = `dayidk`;
 
         dayGrid.append(dayTile);
+        dailyBars.push(dayTile);
     }
 }
 function initializeHours(){
@@ -121,6 +122,24 @@ function loadCurrentData(data){
     const currHumidity = document.getElementById("humidity");
     currHumidity.innerHTML = `Humidity: ${currentData.relative_humidity_2m}${humidityUnit}`;
 }
+function loadDailyData(data){
+    const Data = data.daily;
+    const Units = data.daily_units;
+
+    for (let i = 0; i < dailyBars.length; i++){
+        const time = Data.time[i];
+        const index = time.indexOf('-');
+
+        dailyBars[i].innerHTML = 
+            `<span>
+                <span class="daily-date">${time.substring(index+1)}</span><br>
+                ${Data.temperature_2m_mean[i] + Units.temperature_2m_mean}<br>
+                <span class="daily-small-text">
+                    (${Data.temperature_2m_min[i]}-${Data.temperature_2m_max[i]})
+                </span>
+            </span>`
+    }
+}
 function loadHourlyData(data){
     let hourlyData = data.hourly;
 
@@ -173,7 +192,7 @@ async function initialize() {
     }
     const Data = await getAllData(longitude,latitude);
     //
-    //loadDailyData(Data);
+    loadDailyData(Data);
     loadCurrentData(Data);
     loadHourlyData(Data);
     console.log("Done");

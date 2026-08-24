@@ -61,7 +61,7 @@ function initializeDays(){
         const dayTile = document.createElement('div');
         dayTile.id = `day${i}`;
         dayTile.className = `daily-weather`;
-        dayTile.textContent = `dayidk`;
+        dayTile.textContent = `Loading...`;
 
         dayGrid.append(dayTile);
         dailyBars.push(dayTile);
@@ -77,7 +77,7 @@ function initializeHours(){
         const hourTemp = document.createElement(`div`);
         hourTemp.id = `hour${i}-temp`;
         hourTemp.className = `hourly-temp`;
-        hourTemp.textContent = `H${i} temp`;
+        hourTemp.textContent = `Loading H${i} temp`;
 
         const hourInfo = document.createElement(`div`);
         hourInfo.id = `hour${i}-info`;
@@ -132,7 +132,7 @@ function loadDailyData(data){
 
         dailyBars[i].innerHTML = 
             `<span>
-                <span class="daily-date">${time.substring(index+1)}</span><br>
+                <span class="daily-date">${time.substring(index+1)}</span><br><br>
                 ${Data.temperature_2m_mean[i] + Units.temperature_2m_mean}<br>
                 <span class="daily-small-text">
                     (${Data.temperature_2m_min[i]}-${Data.temperature_2m_max[i]})

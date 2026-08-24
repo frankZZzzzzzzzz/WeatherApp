@@ -106,9 +106,20 @@ html::-webkit-scrollbar-thumb:active {
     background-color:white;
 }
 .hourly-info{
+    opacity: 1;
     margin: 0;
 
     background-color: rgb(217, 236, 253);
+    transition: 
+        opacity .1s ease-out,
+        display 0s .1s;
+
+    transition-behavior: allow-discrete;
+}
+@starting-style{
+    .hourly-info{
+        opacity: 0;
+    }
 }
 .hourly-temp{
     padding: 10px;
@@ -117,5 +128,6 @@ html::-webkit-scrollbar-thumb:active {
     padding: 10px;
 }
 .hidden{
+    opacity: 0;
     display: none;
 }

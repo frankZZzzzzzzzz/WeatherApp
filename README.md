@@ -1,4 +1,5 @@
-## Weather App
+# Weather App
+This program gets the current position from the browser and fetches information from openmeteo to display on the screen
 
 ## How to run
 Program requires **Node.js** and **npm** to be installed
